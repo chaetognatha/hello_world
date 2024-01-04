@@ -1,20 +1,22 @@
-use clap::{App, Arg};
+use clap::Parser;
+
+// Parser is a derive macro that generates a struct that implements the clap::Parser trait
+// the Parser trait provides a parse method that parses the cli args
+// Debug is a derive macro that implements the Debug trait for the struct
+// attributes in rust are used to provide metadata about the item they are attached to
+#[derive(Parser, Debug)]
+#[command(author, version, about, long_about = None)]
+// a struct that defines which cli args are expected
+struct Args {
+    // attribute that provides info on how to parse the argument
+    // in this case you can use the -s or --say flag to pass a string
+    #[arg(short, long)]
+    say: String,
+}
 
 fn main() {
-    // Create a new clap app
-    let matches = App::new("Interactive hello world cli app")
-    // Add a command line argument
-    .arg(Arg::with_name("say")
-    // Add a help message for the argument
-    .help("What do you want to say?")
-    // Make the argument required
-    .required(true)
-    // Specify that it is the first argument
-    .index(1))
-    // Get the matches
-    .get_matches();
-    // get the value of the say argument
-    let say = matches.value_of("say").unwrap();
-    // Print the value
-    println!("{}", say);
+    // parse the cli args
+    let args = Args::parse();
+    // print the cli args
+    println!("You said: {}", args.say)
 }

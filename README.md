@@ -42,7 +42,6 @@ Add cargo-edit:
 ```
 cargo install cargo-edit
 ```
-
 Now I will no longer have to edit the Cargo.toml directly, instead I add a crate like this:
 ```
 cargo add clap
