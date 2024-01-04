@@ -1,4 +1,6 @@
-This is a default hello world project written in rust.
+This is a default hello world project written in rust. Future of bioinformatics?
+
+# The basics
 
 First install rust. I am using https://rustup.rs/
 ```
@@ -34,3 +36,15 @@ Hello, world!
 
 
 \* rust uses snake or kebab naming conventions, so hello_world and hello-world are accepted
+
+# Quality of life
+Add cargo-edit:
+```
+cargo install cargo-edit
+```
+
+Now I will no longer have to edit the Cargo.toml directly, instead I add a crate like this:
+```
+cargo add clap
+```
+and voilá! dependencies are updated!
